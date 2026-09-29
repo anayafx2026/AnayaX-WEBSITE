@@ -1,0 +1,17 @@
+# Funcionalidades
+- Home: intro por fases con PNG suministrados; reproducción del video asociada al movimiento superior del símbolo.
+- Pausa global de movimiento y omitir intro; no hay controles de repetición o pausa de video dentro de la portada.
+- Menú modal accesible con cierre, Escape y restauración del foco.
+- Portfolio de ocho proyectos en galería mosaico monocromática y páginas individuales.
+- Gallery manual de seis servicios con flechas, teclado y gestos; cada tarjeta atenúa su espacio FOTO y revela “Explore service” al hover o foco.
+- Servicios: descripciones y todas las especialidades del website anterior.
+- Estudio: Simón Anaya, experiencia, tecnologías, principios y proceso.
+- Contacto de cuatro pasos, interés de servicio, validación y borrador de correo revisable.
+- FAQs basadas en contenido de Anaya FX.
+- Fotografías y demás medios como espacios blancos. Sólo se cargan la identidad suministrada y el video local de portada.
+- /info y /hone redirigen a /about; /play redirige al servicio inmersivo.
+- Gallery de servicios en Home: seis tarjetas superpuestas, con tarjeta activa, flechas, click, teclado y gesto horizontal; conserva los espacios blancos FOTO.
+- List de servicios en /services: seis enlaces tipográficos de gran formato a las fichas de servicio.
+- Selector global Light / Dark / System: Dark predeterminado, System sigue prefers-color-scheme y la elección se persiste en el navegador.
+- Hero simplificado a dos mensajes centrales. El video se aleja y se desenfoca al avanzar el scroll.
+- Home muestra, antes de Services, tres proyectos principales en composición editorial: título central entre dos espacios multimedia con el izquierdo más pequeño. Más abajo, “Our work.” conserva la galería de esos tres proyectos y deja el acceso “View all work” sin flecha; los cinco proyectos restantes permanecen disponibles en /work.

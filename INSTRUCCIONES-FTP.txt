@@ -1,0 +1,14 @@
+PAQUETE FTP - ANAYA FX
+
+Sube el CONTENIDO de la carpeta "ftp" al directorio publico de tu hosting.
+Normalmente se llama public_html, www o htdocs. No subas la carpeta "ftp"
+como una carpeta interior.
+
+Incluye el sitio ya compilado: index.html, carpetas _next, brand, videos,
+work y services. No requiere Node.js, pnpm ni una base de datos.
+
+Despues de subirlo, abre tu dominio y comprueba la pagina de inicio, Work,
+Services, Contact y el video de portada.
+
+Nota: las rutas /api/health y las redirecciones de servidor no se usan en
+esta version estatica. El formulario de contacto abre el cliente de correo.

@@ -1,0 +1,2 @@
+type Props={kind:"foto"|"video";label:string;className?:string};
+export function MediaPlaceholder({kind,label,className=""}:Props){return <div className={`media-placeholder ${className}`} role="img" aria-label={`Espacio para ${kind}: ${label}`} data-media={kind}><span className="placeholder-label"><span className="placeholder-kind">{kind==="video"?"VIDEO":"FOTO"}</span><span className="placeholder-caption">{label}</span></span></div>;}
