@@ -12,6 +12,10 @@ No se han incorporado fotos ni otros videos. Sus espacios siguen rotulados FOTO/
 - public/collaborators: BMW, Coachella, Daft Punk, Disney, Ford, Lenny Kravitz, Microsoft, Netflix, Sony y Sphere.
 - Fuente: C:/Users/anton/Downloads/AnayaFX/LOGOS FOR ANAYAFX. Se usan únicamente en la cinta de colaboradores.
 
+## Iconos de redes sociales proporcionados
+- public/social: Facebook, Instagram y TikTok.
+- Fuente: C:/Users/anton/Downloads/AnayaFX/Social media logos. Se muestran en blanco sobre Dark y negro sobre Light en la barra inferior.
+
 ## Tipografía local
 - public/fonts/mori-regular.woff2
 - public/fonts/mori-semibold.woff2

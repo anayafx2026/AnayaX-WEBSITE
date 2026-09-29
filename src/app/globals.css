@@ -292,6 +292,7 @@ html{scrollbar-gutter:stable}
 .client-logo{width:170px;height:85px;display:grid;place-items:center;flex:none}.client-logo img{width:100%;height:100%;object-fit:contain;opacity:.72;filter:grayscale(1) brightness(0) invert(1);transition:opacity .25s ease}.client-logo:hover img{opacity:1}:root[data-theme="light"] .client-logo img{filter:grayscale(1) brightness(0)}@media(max-width:640px){.client-logo{width:140px;height:75px}}
 .client-window{padding-block:10px}.client-track,.client-group{align-items:center;gap:78px}.client-track{animation-duration:102s}.client-logo{width:210px;height:100px;place-items:center}.client-logo img{width:88%;height:78%;object-position:center;object-fit:contain}@media(max-width:640px){.client-track,.client-group{gap:46px}.client-logo{width:160px;height:82px}}
 .client-group .client-logo:nth-child(1) img{transform:translateY(-8px)}.client-group .client-logo:nth-child(4) img{transform:translateY(-12px)}
+.social-dock{display:flex;align-items:center;gap:15px;padding:0 17px;border-right:1px solid #ffffff26}.social-dock img{width:16px;height:16px;object-fit:contain;filter:grayscale(1) brightness(0) invert(1);opacity:.78}:root[data-theme="light"] .social-dock{border-color:#1111111f}:root[data-theme="light"] .social-dock img{filter:grayscale(1) brightness(0)}@media(max-width:767px){.social-dock{gap:12px;padding-inline:14px}.social-dock img{width:15px;height:15px}}
 
 /* Home: 3D service carousel (desktop/tablet); phones keep the deck carousel */
 .service-loop{padding:120px 0 110px;border-top:1px solid var(--color-line);overflow-x:clip}
