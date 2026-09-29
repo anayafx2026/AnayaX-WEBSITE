@@ -285,7 +285,18 @@ export const capabilities = [
     "description": "Disguise programming, previsualization, integration and high-performance server rentals."
   }
 ] as const;
-export const clients = ["COACHELLA","THE EAGLES","FORD","DISNEY","MICROSOFT","SONY"];
+export const clients = [
+  { name: "BMW", logo: "/collaborators/bmw.png" },
+  { name: "Coachella", logo: "/collaborators/coachella.png" },
+  { name: "Daft Punk", logo: "/collaborators/daft-punk.png" },
+  { name: "Disney", logo: "/collaborators/disney.png" },
+  { name: "Ford", logo: "/collaborators/ford.png" },
+  { name: "Lenny Kravitz", logo: "/collaborators/lenny-kravitz.png" },
+  { name: "Microsoft", logo: "/collaborators/microsoft.png" },
+  { name: "Netflix", logo: "/collaborators/netflix.png" },
+  { name: "Sony", logo: "/collaborators/sony.png" },
+  { name: "Sphere", logo: "/collaborators/sphere.png" },
+] as const;
 export const technologies = ["Disguise","Unreal Engine","Notch","TouchDesigner"];
 export const faqs = [
   {
