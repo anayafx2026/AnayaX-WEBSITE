@@ -24,7 +24,7 @@
 .movement{padding:0}
 .movement h2{position:absolute;top:24.2%;left:0;right:0;font-size:clamp(60px,11.7vw,225px);line-height:1.42}
 .closing h2{font-size:clamp(42px,6.2vw,120px);font-weight:600}
-.closing h2 span{position:absolute;display:block}.next{left:2.7%;top:34.2%}.shot{top:12.8%;left:40.2%;right:40.2%}.could{right:2.4%;top:32.8%}.yours{top:75.8%;left:36%;right:36%}
+.closing h2 > span{position:absolute;display:block}.next{left:2.7%;top:34.2%}.shot{top:12.8%;left:40.2%;right:40.2%}.could{right:2.4%;top:32.8%}.yours{top:75.8%;left:36%;right:36%}
 .closingFront{display:none}
 .movementFront,.mobileBreak,.mobileClosingWord{display:none}
 .phoneCopy{display:none}
