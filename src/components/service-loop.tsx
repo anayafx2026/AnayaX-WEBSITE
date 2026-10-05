@@ -21,8 +21,10 @@ export function ServiceLoop(){
     const io=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;if(!visible) angle=NaN;});
     io.observe(el);
     const wheel=(event:WheelEvent)=>{
-      // Anywhere over the carousel (cards or the gaps between them) the wheel spins it and the page does not scroll.
-      if(Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
+      // Only the central gallery area consumes the wheel. Transformed cards can
+      // extend beyond it, so leave both side gutters available for page scrolling.
+      const box=el.getBoundingClientRect();
+      if(event.ctrlKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom) return;
       event.preventDefault();
       const unit=event.deltaMode===1?16:event.deltaMode===2?innerHeight:1;
       offset-=event.deltaY*unit*.25;

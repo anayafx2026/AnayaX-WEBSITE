@@ -296,7 +296,7 @@ html{scrollbar-gutter:stable}
 
 /* Home: 3D service carousel (desktop/tablet); phones keep the deck carousel */
 .service-loop{padding:120px 0 110px;border-top:1px solid var(--color-line);overflow-x:clip}
-.service-loop-stage{--w:clamp(210px,19vw,300px);--h:calc(var(--w)*1.4);--r:calc(var(--w)*1.12);position:relative;display:grid;place-items:center;height:calc(var(--h)*1.55 + 40px);perspective:calc(var(--w)*3.6)}
+.service-loop-stage{--w:clamp(210px,19vw,300px);--h:calc(var(--w)*1.4);--r:calc(var(--w)*1.12);position:relative;display:grid;place-items:center;width:min(calc(100% - clamp(96px,16vw,384px)),calc(var(--w)*3.8));margin-inline:auto;height:calc(var(--h)*1.55 + 40px);perspective:calc(var(--w)*3.6)}
 .service-loop .gallery-all-link{margin-top:70px}
 .service-loop-ring{position:relative;width:var(--w);height:var(--h);transform:rotateX(-6deg);transform-style:preserve-3d}
 .service-loop-card{position:absolute;inset:0;display:block;overflow:hidden;color:#fff;backface-visibility:hidden;-webkit-user-drag:none;transform:rotateY(calc(360deg/var(--n)*var(--i))) translateZ(var(--r));filter:brightness(.55);transition:filter .5s}

@@ -4,9 +4,9 @@ Tokens originales en src/app/globals.css, Mori local y diseño editorial oscuro.
 
 BrandLogo usa el archivo original sin modificar (1920 x 321). IntroHero conserva Web Animations API, fases symbol/title/fx/compact/dock/done y los tiempos originales. Las máscaras CSS segmentan el logo antiguo, sin generar una identidad nueva. El video conserva escala/desenfoque según scroll y fuentes MP4/WebM con póster.
 
-ServiceLoop conserva carrusel 3D por scroll/rueda en escritorio. ServiceGallery conserva tarjetas superpuestas, flechas, teclado y gesto en móvil. ServiceList conserva enlaces tipográficos y efectos de seguimiento/revelado.
+ServiceLoop conserva carrusel 3D por scroll/rueda en escritorio. Solo el recuadro central de la galería captura la rueda para girar las tarjetas; los laterales quedan libres para desplazar la página, incluso si una tarjeta transformada sobresale del recuadro. ServiceGallery conserva tarjetas superpuestas, flechas, teclado y gesto en móvil. ServiceList conserva enlaces tipográficos y efectos de seguimiento/revelado.
 
-FeaturedProjects fija el orden Coachella, Eagles Sphere, XR Stage, independiente del orden editorial de los doce proyectos. ElasticGallery muestra doce proyectos en Home y Services, con expansión por hover/foco y acordeón en móvil.
+FeaturedProjects fija el orden Coachella, Eagles Sphere, XR Stage, independiente del orden editorial de los doce proyectos. En Eagles Sphere el video ocupa el lado izquierdo y la foto el derecho; en celular se apilan en ese mismo orden. ElasticGallery muestra doce proyectos en Home y Services, con expansión por hover/foco y acordeón en móvil.
 
 WorkMosaic conserva el mosaico, extendido a doce proyectos, y sus filtros. Las imágenes faltantes permanecen pendientes; no se inventan ni se atribuyen a otro evento.
 
