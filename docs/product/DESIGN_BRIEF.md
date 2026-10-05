@@ -1,15 +1,15 @@
-# Dirección de diseño
-Base visual: dirección editorial propia de Anaya FX.
-Fondo #0a0a0a, texto #ededed, Mori local, portada a pantalla completa, menú inferior y espacios amplios.
-Marca actual: Anaya FX, archivos PNG suministrados en Identidad visual. Símbolo centrado arriba y título completo en menú y footer.
-Inicio: entrada cinematográfica, video suministrado de fondo, manifiesto, tres proyectos editoriales principales, galería de seis servicios, capacidades, una segunda galería de Work, clientes y presentación del estudio.
-Servicios: la home usa una galería de seis tarjetas superpuestas, con tarjeta central seleccionable, flechas, teclado y gesto horizontal. La ruta /services usa una lista tipográfica de gran formato enlazada a cada servicio.
-Tema: selector fijo Light / Dark / System. Dark es la apariencia inicial de Anaya FX; System sigue el esquema de color del dispositivo. La preferencia se conserva localmente.
-Intro: 1.2 s símbolo ascendente, 1.05 s deslizamiento de AN hacia la izquierda y YA hacia la derecha desde detrás del símbolo, .55 s deslizamiento de FX, .7 s recogida inmediata de las letras detrás de máscaras fijas y 1.3 s desplazamiento superior. Las letras conservan su forma, sin scaleX ni fundidos. Video empieza al inicio del último paso, cuyo movimiento se conserva.
-Hero: tras la intro sólo muestra centrados “Creative vision. Technical precision.” y “We engineer spectacle.” Al hacer scroll, el video escala hacia fuera y se desenfoca progresivamente.
-Work en inicio: antes de Services, “Selected work” y “Built to move the room.” presentan tres proyectos principales. Cada uno tiene el título centrado entre dos espacios multimedia, con el de la izquierda más pequeño. Más abajo, “Our work.” conserva la galería elástica de esos tres proyectos y el botón sin flecha hacia /work; los cinco proyectos restantes se muestran en esa ruta.
-Gallery de servicios: sin contador /06 ni nombre dinámico junto a las flechas. Al pasar el cursor o enfocar una tarjeta, su espacio FOTO se atenúa y aparece “Explore service” inmediatamente debajo.
-Work: “Our work.”, seguido de “A selection of live, spatial and screen-based experiences by Anaya FX.” y una galería mosaico en escala de grises de los ocho proyectos. La cuadrícula explícita evita huecos y mantiene la composición equilibrada. No hay filtro por servicio ni contador “Selected work / 08”.
-Footer: el logotipo grande usa tinta clara sobre tema Dark e ink oscuro sobre tema Light.
-Todas las fotos y otros videos siguen como rectángulos blancos rotulados. No se incorporaron las imágenes antiguas.
-Intro en dialog nativo con Skip/Escape. No bloquea el sitio al omitirla. Movimiento reducido salta la intro y deja el video detenido. Video mudo, inline y repetible.
+# Dirección de diseño ANAYAFX
+
+## Aclaración del usuario: conservar diseño y animaciones
+
+La última instrucción prevalece sobre la interpretación inicial de la guía: mantener el orden, composición y animaciones existentes; cambiar la información y el logo. Los doce trabajos se incorporan en la galería inferior de Home y en Services.
+
+Home mantiene: intro/hero, manifiesto, tres filas destacadas (Coachella, Sphere, XR Stage), carrusel 3D en escritorio y tarjetas superpuestas en móvil, capacidades, galería elástica inferior, clientes y resumen del estudio. No se añade una sección nueva de Sphere ni una sección de accesos que cambie este orden. Rentals y Studio se enlazan desde el resumen existente.
+
+La intro recupera su coreografía y duración anteriores: entrada desde abajo, letras laterales, FX, recogida y desplazamiento hacia la cabecera; las máscaras se adaptan al logo original sin deformarlo. El video recupera escala y desenfoque con scroll. Se conservan video MP4/WebM, almacenamiento de sesión tolerante a fallos y movimiento reducido. La duración anterior sustituye el ajuste de 2.5 segundos del primer intento.
+
+Services conserva su lista tipográfica y efectos, con la galería de doce proyectos debajo. Home conserva el comportamiento elástico/hover y acordeón móvil con los doce trabajos. About recupera sus bloques y espacios multimedia, integrando la información nueva. Work recupera el mosaico y efectos anteriores, extendido a doce elementos con los filtros de la guía.
+
+Los espacios de media existentes se conservan mientras llega el material aprobado; los rótulos se traducen al inglés. Se retiró el rediseño de tarjetas numeradas y se conservan las animaciones originales.
+
+Textos y pendientes de entrega: docs/product/GUIDE_IMPLEMENTATION.md.

@@ -1,30 +1,18 @@
-# Anaya FX
-Website de Anaya FX creado sobre fullstack_website_starter.
+# ANAYAFX
+
+Sitio Next.js para revisión local. Fuente editorial actual: ANAYAFX-Guia-Sitio-Web-Tono.pdf, del 29 de septiembre de 2026.
 
 ## Desarrollo
-Node 22.x y pnpm 10.x.
-```powershell
-pnpm install --frozen-lockfile
-pnpm dev
-pnpm check
-```
-Abrir http://localhost:3000. No se requieren credenciales para el sitio público; Supabase permanece opcional.
+Node 22.x y pnpm 10.x. Ejecutar `pnpm install --frozen-lockfile`, `pnpm dev` y `pnpm check`.
 
-## Contenido
-Inicio con introducción del logo y video, 8 proyectos en galería mosaico monocromática con fichas, 6 servicios con todas sus especialidades, estudio, contacto y FAQs.
-Los textos proceden de las dos versiones anteriores del website Anaya FX. Las fotos y demás videos siguen como espacios blancos FOTO / VIDEO.
+## Contenido y marca
+Home, Work (12 proyectos y cuatro filtros), Services (seis disciplinas), Rentals, Studio, About, Contact y FAQs. Logo original de OLD landing, sin cambios de diseño ni color. Todo el texto público usa ANAYAFX, salvo el copyright Anaya Visual, Inc.
 
-## Entrada de marca
-Símbolo desde abajo → AN se desliza desde el centro a la izquierda y YA a la derecha → FX se desliza hacia fuera → las letras se recogen detrás del símbolo → símbolo hacia la cabecera. Máscaras fijas ocultan las letras durante su recorrido, sin deformarlas.
-El video local comienza con el desplazamiento superior del símbolo. Duración aproximada de la secuencia: 4.8 s. La portada no incluye botón para saltar la intro, Replay ni un control de pausa/reproducción del video; la tecla Escape sigue cerrando la intro. Preferencia de movimiento reducido: sin intro y video detenido hasta una acción del visitante.
-La implementación está en src/components/intro-hero.tsx y src/app/globals.css.
+Intro con la coreografía y tiempos anteriores, una vez por sesión, omisible con clic, rueda o Escape. Movimiento reducido omite intro y detiene video. MP4 H.264 y WebM derivados del MOV disponible, con póster y control de pausa. El nuevo master sigue pendiente.
 
-## Servicios y tema
-Home presenta los seis servicios como una galería de tarjetas superpuestas. Al hover o foco de una tarjeta, el espacio FOTO se atenúa y aparece “Explore service”. `/services` usa una lista tipográfica de gran formato con enlaces a cada especialidad. El selector fijo Light / Dark / System conserva la elección en el navegador; System respeta la preferencia de color del dispositivo.
+Contacto: Project, Rental o Studio, datos, brief y revisión. Abre un borrador para studio@anayafx.com; no envía ni almacena datos automáticamente. Se preservan orden y animaciones: carrusel 3D en escritorio, tarjetas en móvil, galería elástica inferior con doce trabajos y galería de trabajos al final de Services.
 
-## Recursos
-public/brand contiene los PNG originales de Identidad visual.
-public/videos/anaya-showreel.mov es una copia sin modificar de IMG_0028.MOV (33.11 s, ~60 MB).
-El material original en Downloads/AnayaFX permanece intacto.
-El contacto prepara un borrador para studio@anayafx.com; no envía ni guarda datos automáticamente.
-No se ha publicado el website. Noindex activo para la revisión local.
+## Estado editorial
+Los textos de la guía se han cargado para revisión. Las imágenes antiguas identificadas se usan para Eagles Tour, Andrea Bocelli, Jimmy Kimmel y XR Stage. Los proyectos sin imágenes conservan los espacios multimedia originales para esta revisión local; no se presentan como producción terminada. Consultar docs/product/GUIDE_IMPLEMENTATION.md para los bloqueos y decisiones antes de publicar.
+
+No se ha publicado ni cambiado DNS. Noindex activo. Supabase sigue siendo opcional.

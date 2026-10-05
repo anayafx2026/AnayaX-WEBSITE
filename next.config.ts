@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {source:"/work/holoflux-coachella",destination:"/work/coachella",permanent:true},
+      {source:"/work/the-sphere-las-vegas",destination:"/work/eagles-sphere",permanent:true},
+      {source:"/services/spacial-projection-and-special-fx",destination:"/services/spatial-projection-and-special-fx",permanent:true},
+    ];
+  },
   async headers() {
     return [{
       source: "/:path*",

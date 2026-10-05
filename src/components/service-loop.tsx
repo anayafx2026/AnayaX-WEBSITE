@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useEffect,useRef,useState} from "react";
 import type {CSSProperties} from "react";
 import {services} from "@/content/site";
-import {MediaPlaceholder} from "./media-placeholder";
+import {ServiceCardVideo} from "./service-card-video";
 
 const COUNT=services.length;
 const STEP=360/COUNT;
@@ -21,7 +21,7 @@ export function ServiceLoop(){
     const io=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;if(!visible) angle=NaN;});
     io.observe(el);
     const wheel=(event:WheelEvent)=>{
-      if(!(event.target instanceof Element)||!event.target.closest(".service-loop-card")) return;
+      // Anywhere over the carousel (cards or the gaps between them) the wheel spins it and the page does not scroll.
       if(Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
       event.preventDefault();
       const unit=event.deltaMode===1?16:event.deltaMode===2?innerHeight:1;
@@ -52,7 +52,7 @@ export function ServiceLoop(){
       <div ref={ring} className="service-loop-ring">
         {services.map((service,index)=>(
           <Link key={service.slug} href={`/services/${service.slug}`} className={`service-loop-card${index===front?" is-front":""}`} style={{"--i":index} as CSSProperties} aria-label={service.title}>
-            <MediaPlaceholder kind="foto" label={`${service.title} · carrusel`}/>
+            <ServiceCardVideo slug={service.slug} active={index===front}/>
             <span className="service-loop-top"><span>{String(index+1).padStart(2,"0")}</span><span>{service.capabilities[0]}</span></span>
             <span className="service-loop-title">{service.title}</span>
           </Link>

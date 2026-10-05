@@ -38,9 +38,10 @@ async function start(required) {
 }
 function checkMedia(html,home){
   assert.ok(!/<iframe\b/i.test(html));
-  for(const img of html.matchAll(/<img\b[^>]*src="([^"]+)"/g))assert.ok(img[1].startsWith('/brand/'),'Only supplied branding is permitted');
-  if(!home)assert.ok(!/<video\b/i.test(html),'Other videos remain placeholders');
-  assert.ok(html.includes('Anaya FX'));
+  for(const img of html.matchAll(/<img\b[^>]*>/g))assert.match(img[0],/alt="[^"]*"/,'Every image needs an alt attribute');
+  if(!home)assert.ok(!/<video\b/i.test(html),'No unsupplied project videos');
+  assert.ok(html.includes('ANAYAFX'));
+  assert.ok(!/Private Commission|13102223333|www\.facebook\.com|Espacio para|>FOTO</.test(html),'No invented projects, contacts or Spanish filler labels');
 }
 const app = await start(false);
 try {
@@ -68,14 +69,17 @@ try {
   }
   assert.equal((await fetch(app.base + '/ruta-inexistente')).status, 404);
   assert.equal((await fetch(app.base + '/api/health/ready')).status, 200);
-  assert.ok(html.includes('/videos/anaya-showreel.mov'));
+  assert.ok(html.includes('/videos/home-banner.mp4'));
+  assert.ok(html.includes('poster="/videos/home-banner-poster.jpg"'));
   assert.equal((html.match(/<video\b/g)||[]).length,1);
-  assert.ok(!/<video[^>]*autoplay/i.test(html),'Video must wait for the intro dock phase');
-  assert.ok(html.includes('data-media="foto"'));
+  assert.ok(!/<video[^>]*autoplay/i.test(html),'Playback starts after the intro and respects reduced motion');
   assert.ok(html.includes('service-gallery'), 'Home must render the interactive service gallery');
-  assert.ok(html.includes('Color mode'), 'The global colour mode selector must render');
+  assert.ok(html.includes('service-loop-ring'), 'Home keeps its original 3D service carousel');
+  assert.equal((html.match(/class="featured-project /g)||[]).length,3,'Home keeps its three original featured rows');
+  assert.equal((html.match(/class="elastic-panel/g)||[]).length,12,'The lower Home gallery contains all twelve projects');
+  assert.ok(!html.includes('Color mode'), 'The theme selector is retired');
   checkMedia(html,true);
-  const pages = ['/work', '/services', '/about', '/contact', '/faq', ...projects.map(project => '/work/' + project.slug), ...services.map(service => '/services/' + service.slug)];
+  const pages = ['/work', '/services', '/rentals', '/studio', '/about', '/contact', '/faqs', ...projects.map(project => '/work/' + project.slug), ...services.map(service => '/services/' + service.slug)];
   for (const page of pages) {
     const result = await fetch(app.base + page);
     assert.equal(result.status, 200, page + ' must load');
@@ -84,21 +88,24 @@ try {
     assert.ok(body.includes(`rel="canonical" href="${site.origin}${page}"`), page + ' must have its own canonical');
     checkMedia(body,false);
     assert.ok(!/Milton Keynes/.test(body), page + ' must contain Anaya content only');
-    if (page === '/services') assert.ok(body.includes('service-list'), 'Services must render the list view');
+    if (page === '/services') {
+      assert.ok(body.includes('service-list'), 'Services must render the original list view');
+      assert.equal((body.match(/class="elastic-panel/g)||[]).length,12,'Services also contains the twelve projects');
+    }
   }
-  for(const [from,to] of [['/info','/about'],['/hone','/about'],['/play','/services/immersive-and-interactive-experiences']]){
+  for(const [from,to] of [['/faq','/faqs'],['/work/holoflux-coachella','/work/coachella'],['/work/the-sphere-las-vegas','/work/eagles-sphere'],['/services/spacial-projection-and-special-fx','/services/spatial-projection-and-special-fx'],['/info','/about'],['/hone','/about'],['/play','/services/immersive-and-interactive-experiences']]){
     const result=await fetch(app.base+from,{redirect:'manual'});
     assert.ok([307,308].includes(result.status),from);
     assert.equal(new URL(result.headers.get('location'),app.base).pathname,to);
   }
-  for(const asset of ['/brand/symbol.png','/brand/wordmark.png','/brand/fx.png','/videos/anaya-showreel.mov']) {
+  for(const asset of ['/brand/original-logo.png','/videos/home-banner.mp4','/videos/home-banner-poster.jpg',...projects.flatMap(project=>project.image?[project.image]:[])]) {
     const assetResponse=await fetch(app.base+asset,{method:'HEAD'});
     assert.equal(assetResponse.status,200,asset);
     assert.ok(Number(assetResponse.headers.get('content-length'))>0,asset);
   }
   assert.equal((await fetch(app.base + '/work/missing-project')).status, 404);
   assert.equal((await fetch(app.base + '/services/missing-service')).status, 404);
-  console.log('PASS: ' + (pages.length + 1) + ' routes, individual canonicals, semantic headings, media placeholders and missing-item 404s.');
+  console.log('PASS: ' + (pages.length + 1) + ' routes, individual canonicals, semantic headings, supplied media and missing-item 404s.');
   console.log('PASS: homepage, canonical, language, indexing, headers, sitemap, 404 and public health.');
 } finally { await app.stop(); }
 

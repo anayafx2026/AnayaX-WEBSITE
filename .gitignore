@@ -6,6 +6,7 @@ ftp_new anayafx/
 coverage/
 playwright-report/
 test-results/
+tmp/
 .env
 .env.*
 !.env.example

@@ -8,6 +8,8 @@ export default defineConfig([
   globalIgnores([
     ".next/**",
     "out/**",
+    "ftp_new anayafx/**",
+    "tmp/**",
     "coverage/**",
     "next-env.d.ts",
   ]),

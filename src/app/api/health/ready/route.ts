@@ -1,4 +1,4 @@
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 import { backendRequired } from "@/config/supabase.schema";
 import { getSupabaseConfig } from "@/config/supabase.server";
 import { checkDependencies } from "@/lib/health";

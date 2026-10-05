@@ -1,0 +1,35 @@
+.story { position: relative; height: 720svh; }
+.background { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, #292929, #111 50%, #090909 85%); }
+.poster,.canvas { position: absolute; width: 100%; height: 100%; object-fit: contain; }
+.canvas { opacity: 0; }
+.canvas[data-ready="true"] { opacity: 1; }
+.background:has(.canvas[data-ready="true"]) .poster { opacity: 0; }
+.background::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,#09090988,transparent 40%,#09090944); }
+.stage { position: sticky; top: 0; height: 100svh; z-index: 1; }
+.opening { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 110px 24px; background: #09090955; }
+.opening h1 { font-size: clamp(44px,8vw,124px); font-weight: 400; line-height: 1.02; text-shadow: 0 3px 40px #000; }
+.eyebrow { font-size: 11px; letter-spacing: .13em; color: #ccc; margin-bottom: 22px; }
+.hint { margin-top: 30px; font-size: 12px; color: #bbb; }
+.card { position: absolute; top: 50%; width: min(390px,30vw); padding: 30px; margin-top: -180px; border: 1px solid #ffffff29; border-radius: 18px; background: #101010c9; backdrop-filter: blur(18px); opacity: 0; visibility: hidden; }
+.right { right: 5vw; }
+.left { left: 5vw; }
+.card h2 { font-size: clamp(28px,3vw,44px); font-weight: 400; line-height: 1.07; margin-bottom: 22px; }
+.description { color: #c4c4c4; font-size: 14px; line-height: 1.65; }
+.card :global(.pill-link) { margin-top: 24px; }
+.background { overflow: hidden; }
+@media(max-width:700px) {
+ .story { height: 760svh; }
+ .poster,.canvas { height: 66svh; top: 4svh; width: 160%; left: -30%; }
+ .card { top: auto; bottom: 100px; width: auto; left: 20px; right: 20px; margin-top: 0; padding: 22px; }
+ .card h2 { font-size: 30px; margin-bottom: 14px; }
+ .eyebrow { margin-bottom: 14px; font-size: 10px; }
+ .description { font-size: 13px; line-height: 1.55; }
+ .opening h1 { font-size: clamp(40px,10vw,65px); }
+}
+@media(prefers-reduced-motion:reduce) {
+ .story { height: auto; }
+ .stage { position: relative; height: auto; padding: 150px 22px 100px; }
+ .opening { position: relative; padding: 60px 0 100px; opacity: 1!important; transform: none!important; filter: none!important; background: none; }
+ .card { position: relative; top: auto; bottom: auto; left: auto; right: auto; margin: 0 auto 36px; width: min(100%,600px); opacity: 1!important; visibility: visible!important; transform: none!important; }
+ .hint { display: none; }
+}

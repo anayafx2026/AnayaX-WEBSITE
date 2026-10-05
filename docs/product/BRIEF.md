@@ -1,10 +1,7 @@
-# Anaya FX
-Estado: implementación para revisión local.
-Solicitud actual: adaptar el contenido completo del website anterior de Anaya FX al diseño ya construido con fullstack_website_starter.
-Fuentes: Downloads/AnayaFX/app/page.tsx y LANDING ANTIGRAVITY (lib/services-data.ts, app/info/page.tsx, app/work/page.tsx).
-Idioma inglés como el contenido original. Rótulos de multimedia en español.
-Alcance: inicio, 8 proyectos y fichas, 6 servicios con descripciones y especialidades, estudio, contacto y FAQs derivadas exclusivamente del contenido proporcionado.
-Los logos y el video de portada son excepciones expresamente autorizadas a los espacios blancos de fotos/videos.
-La entrada debe mostrar símbolo desde abajo, título desde ambos lados, FX, compactación y símbolo hacia arriba. El video empieza al comenzar ese último desplazamiento.
-Formulario de cuatro pasos con selección de servicio y revisión: abre un borrador de correo por acción del visitante. No hay envío automático ni almacenamiento.
-No se necesitan recursos remotos ni Supabase.
+# ANAYAFX
+Estado: revisión local, no listo para lanzamiento.
+Solicitud actual: cumplir ANAYAFX-Guia-Sitio-Web-Tono.pdf y recuperar el logo antiguo de OLD landing.
+La guía del 29 de septiembre de 2026 reemplaza el mapa y los pendientes anteriores. Conservar literalmente su texto inglés. Mostrar ANAYAFX en textos y metadatos; Anaya Visual, Inc. solo en copyright. No usar rayas largas.
+Alcance: Home, doce proyectos con filtros, seis servicios, Rentals, Studio en The Core, About, contacto Project/Rental/Studio y diez FAQs. No inventar media ni roles pendientes de confirmación.
+La aclaración posterior del usuario exige mantener el orden y las animaciones anteriores; nuevos trabajos en la galería inferior de Home y en Services. Intro con coreografía y duración originales, una vez por sesión. Tema oscuro fijo. Formulario abre borrador de correo; no realiza envío automático. No se necesitan recursos remotos ni Supabase.
+Estado por requisito y bloqueos: docs/product/GUIDE_IMPLEMENTATION.md.
