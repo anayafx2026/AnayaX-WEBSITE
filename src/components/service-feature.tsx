@@ -33,7 +33,7 @@ export function ServiceFeature({topics,video="/videos/services-hero.mp4"}:{topic
  return <section ref={section} className="service-feature" aria-labelledby="service-what-we-do">
   <div className="service-feature-stage">
    <div ref={frame} className="service-feature-frame">
-    <div ref={media} className={`service-feature-media${sources.length>1?" is-split":""}`}>{sources.map(src=><video key={src} src={src} autoPlay muted loop playsInline preload="metadata" aria-hidden="true"/>)}</div>
+    <div ref={media} className={`service-feature-media${sources.length>1?" is-split":""}`}>{sources.map(src=><video disablePictureInPicture key={src} src={src} autoPlay muted loop playsInline preload="metadata" aria-hidden="true"/>)}</div>
     <div className="service-feature-shade" aria-hidden="true"/>
    </div>
    <div ref={copy} className="service-feature-copy">

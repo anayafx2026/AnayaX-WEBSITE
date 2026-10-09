@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import {useEffect,useRef} from "react";
-import {services} from "@/content/site";
+import {serviceMenu as services} from "@/content/site";
 import {previewVideo} from "@/content/service-videos";
 export function ServiceList(){
   const list=useRef<HTMLOListElement>(null);
@@ -53,5 +53,5 @@ export function ServiceList(){
     desktop.addEventListener("change",setup);
     return ()=>{desktop.removeEventListener("change",setup);teardown();};
   },[]);
-  return <section className="service-list" aria-labelledby="service-list-title"><div className="service-list-heading"><h2 id="service-list-title">Every surface.<br/>One language.</h2><p className="scroll-cue" aria-hidden="true">scroll<span>↓</span></p><p>Choose a discipline to explore its scope, approach and related work.</p></div><ol ref={list}>{services.map(service=><li key={service.slug}><Link href={`/services/${service.slug}`}><span className="service-list-name">{service.title}</span><span className="sr-only">{service.line}</span></Link><div className="service-preview" aria-hidden="true"><video src={previewVideo(service.slug)} muted loop playsInline preload="metadata" tabIndex={-1}/></div><p className="service-side service-side-left" aria-hidden="true">{service.capabilities.map(item=><span key={item}>{item}</span>)}</p><p className="service-side service-side-right" aria-hidden="true">{service.line}</p></li>)}</ol></section>;
+  return <section className="service-list" aria-labelledby="service-list-title"><div className="service-list-heading"><h2 id="service-list-title">Every surface.<br/>One language.</h2><p className="scroll-cue" aria-hidden="true">scroll<span>↓</span></p><p>Choose a discipline to explore its scope, approach and related work.</p></div><ol ref={list}>{services.map(service=><li key={service.slug}><Link href={service.href}><span className="service-list-name">{service.title}</span><span className="sr-only">{service.line}</span></Link><div className="service-preview" aria-hidden="true">{service.previewSlug===null?<div className="service-video-blank"/>:<video disablePictureInPicture src={previewVideo(service.previewSlug)} muted loop playsInline preload="metadata" tabIndex={-1}/>}</div><p className="service-side service-side-left" aria-hidden="true">{service.capabilities.map(item=><span key={item}>{item}</span>)}</p><p className="service-side service-side-right" aria-hidden="true">{service.line}</p></li>)}</ol></section>;
 }

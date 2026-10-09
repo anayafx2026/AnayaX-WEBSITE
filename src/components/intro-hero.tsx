@@ -163,7 +163,7 @@ export function LegacyIntroHero() {
   },[]);
 
   return <section ref={hero} className="showreel anaya-hero" data-intro-phase={phase} aria-label="ANAYAFX introduction">
-    <video ref={video} className="hero-video" muted playsInline loop preload="metadata" poster="/videos/home-banner-poster.jpg" aria-hidden="true"><source src="/videos/home-banner.mp4" type="video/mp4"/></video>
+    <video disablePictureInPicture ref={video} className="hero-video" muted playsInline loop preload="metadata" poster="/videos/home-banner-poster.jpg" aria-hidden="true"><source src="/videos/home-banner.mp4" type="video/mp4"/></video>
     <div className="hero-shade"/>
     <div className="hero-body"><div><p className="eyebrow">Creative vision. Technical precision.</p><h1>We engineer<br/><span>spectacle.</span></h1></div></div>
     <dialog ref={dialog} className="intro-overlay" aria-label="ANAYAFX logo introduction" onClick={()=>finishIntro.current()} onCancel={event=>{event.preventDefault();finishIntro.current();}}>
@@ -174,55 +174,85 @@ export function LegacyIntroHero() {
         <div ref={symbol} className="intro-symbol"><Image src="/brand/original-logo.png" width={1920} height={321} alt="" unoptimized priority/></div>
       </div>
       <p className="intro-signature">CREATIVE VISION. TECHNICAL PRECISION.</p>    </dialog>
-    <noscript><style>{".anaya-hero .hero-body{opacity:1!important}"}</style></noscript>
+    <noscript><style>{".anaya-hero .hero-body,.anaya-hero .hero-video{opacity:1!important}.site-header{visibility:visible!important}"}</style></noscript>
   </section>;
 }
 
-const logoLightSessionKey="anayafx-logo-light-intro-v1";
+const logoLightSessionKey="anayafx-logo-wipe-intro-v1";
 
+// Intro: the logo is revealed from left to right, then travels up to the header while the dark curtain opens onto the
+// background video. When it lands, the overlay closes and the real header logo takes its place.
 export function IntroHero() {
   const [introVisible,setIntroVisible]=useState(false);
+  const [docking,setDocking]=useState(false);
+  // Until the intro has decided whether to run, the hero stays dark so it never flashes before the logo.
+  const [ready,setReady]=useState(false);
   const hero=useRef<HTMLElement>(null);
   const dialog=useRef<HTMLDialogElement>(null);
+  const curtain=useRef<HTMLDivElement>(null);
+  const logo=useRef<HTMLDivElement>(null);
   const video=useRef<HTMLVideoElement>(null);
+  const finishIntro=useRef<()=>void>(()=>{});
   const {paused}=useMotion();
   const playVideo=useCallback(()=>{
     if (!paused && !document.hidden) void video.current?.play().catch(()=>{});
   },[paused]);
 
   useEffect(()=>{
-    const overlay=dialog.current;
-    if(!overlay)return;
+    const overlay=dialog.current,mark=logo.current,backdrop=curtain.current;
+    if(!overlay||!mark||!backdrop)return;
     const reduced=matchMedia("(prefers-reduced-motion: reduce)");
+    const animations:Animation[]=[];
     let closed=false;
-    let showFrame=0;
-    let timeout:ReturnType<typeof setTimeout>|undefined;
     const finish=(startVideo=true)=>{
       if(closed)return;
       closed=true;
-      clearTimeout(timeout);
+      animations.forEach(animation=>animation.cancel());
       try{sessionStorage.setItem(logoLightSessionKey,"1");}catch{/* Storage is optional. */}
       overlay.close();
-      if(showFrame)cancelAnimationFrame(showFrame);
-      requestAnimationFrame(()=>setIntroVisible(false));
+      requestAnimationFrame(()=>{setDocking(false);setIntroVisible(false);setReady(true);});
       if(startVideo)playVideo();
     };
-    const skip=()=>finish(!reduced.matches);
+    finishIntro.current=()=>finish(!reduced.matches);
+    const skip=()=>finishIntro.current();
+    const animate=(element:Element,frames:Keyframe[],duration:number,easing="cubic-bezier(.65,0,.35,1)")=>{
+      const animation=element.animate(frames,{duration,easing,fill:"forwards"});
+      animations.push(animation);
+      return animation.finished;
+    };
     const hasSeen=(()=>{try{return sessionStorage.getItem(logoLightSessionKey)==="1";}catch{return false;}})();
     if(reduced.matches||hasSeen)finish(!reduced.matches);
     else{
-      showFrame=requestAnimationFrame(()=>setIntroVisible(true));
+      requestAnimationFrame(()=>{if(!closed){setIntroVisible(true);setReady(true);}});
       overlay.showModal();
-      timeout=setTimeout(()=>finish(),2600);
       window.addEventListener("wheel",skip,{passive:true});
       window.addEventListener("touchmove",skip,{passive:true});
+      const sequence=async()=>{
+        await mark.querySelector("img")?.decode().catch(()=>{});
+        if(closed)return;
+        // 1 · reveal from left to right, with the leading edge coming into focus
+        await animate(mark,[{clipPath:"inset(0 100% 0 0)",filter:"blur(6px)",opacity:.6},{clipPath:"inset(0 0% 0 0)",filter:"blur(0px)",opacity:1}],1500);
+        await animate(mark,[{opacity:1},{opacity:1}],350);
+        if(closed)return;
+        // 2 · travel to the header logo while the curtain opens onto the video
+        const from=mark.getBoundingClientRect();
+        const to=document.querySelector("[data-brand-anchor]")?.getBoundingClientRect();
+        if(!to||!to.width){finish();return;}
+        const dx=to.left+to.width/2-(from.left+from.width/2),dy=to.top+to.height/2-(from.top+from.height/2),k=to.width/from.width;
+        setDocking(true);playVideo();
+        await Promise.all([
+          animate(mark,[{transform:"translate(-50%,-50%)"},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(${k})`}],1400),
+          animate(backdrop,[{opacity:1},{opacity:0}],1400,"ease-in-out"),
+        ]);
+        finish();
+      };
+      void sequence().catch(()=>finish());
     }
     const preferenceChanged=()=>{if(reduced.matches)finish(false);};
     reduced.addEventListener("change",preferenceChanged);
     return ()=>{
       closed=true;
-      if(showFrame)cancelAnimationFrame(showFrame);
-      clearTimeout(timeout);
+      animations.forEach(animation=>animation.cancel());
       overlay.close();
       reduced.removeEventListener("change",preferenceChanged);
       window.removeEventListener("wheel",skip);
@@ -254,12 +284,13 @@ export function IntroHero() {
     return ()=>{window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);cancelAnimationFrame(frame);};
   },[]);
 
-  return <section ref={hero} className="showreel anaya-hero" data-intro-visible={introVisible} aria-label="ANAYAFX introduction">
-    <video ref={video} className="hero-video" muted playsInline loop preload="metadata" poster="/videos/home-banner-poster.jpg" aria-hidden="true"><source src="/videos/home-banner.mp4" type="video/mp4"/></video>
+  return <section ref={hero} className="showreel anaya-hero" data-intro-visible={introVisible} data-intro-dock={docking} data-intro-ready={ready} aria-label="ANAYAFX introduction">
+    <video disablePictureInPicture ref={video} className="hero-video" muted playsInline loop preload="metadata" poster="/videos/home-banner-poster.jpg" aria-hidden="true"><source src="/videos/home-banner.mp4" type="video/mp4"/></video>
     <div className="hero-shade"/>
     <div className="hero-body"><div><p className="eyebrow">Creative vision. Technical precision.</p><h1>We engineer<br/><span>spectacle.</span></h1></div></div>
-    <dialog ref={dialog} className="intro-overlay logo-light-intro" aria-label="ANAYAFX introduction" onClick={()=>{try{sessionStorage.setItem(logoLightSessionKey,"1");}catch{/* Storage is optional. */}dialog.current?.close();setIntroVisible(false);playVideo();}} onCancel={event=>{event.preventDefault();dialog.current?.close();setIntroVisible(false);playVideo();}}>
-      <div className="intro-full-logo" aria-hidden="true"><Image src="/brand/original-logo.png" width={1920} height={321} alt="" priority/><span className="intro-light-beam"/></div>
+    <dialog ref={dialog} className="intro-overlay logo-wipe-intro" aria-label="ANAYAFX introduction" onClick={()=>finishIntro.current()} onCancel={event=>{event.preventDefault();finishIntro.current();}}>
+      <div ref={curtain} className="intro-wipe-curtain"/>
+      <div ref={logo} className="intro-wipe-logo" aria-hidden="true"><Image src="/brand/original-logo.png" width={1920} height={321} alt="" priority/></div>
     </dialog>
     <noscript><style>{".anaya-hero .hero-body{opacity:1!important}"}</style></noscript>
   </section>;

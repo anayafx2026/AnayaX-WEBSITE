@@ -92,9 +92,9 @@ export function RentalsStory(){
    scene("s3",T.s3.enter,T.s3.out,s);
    const vfc=scene("s4",T.s4.enter,T.s4.out,s);
    scene("racks",T.racks.enter,T.racks.out,s);
-   // background: the plain dark site background on the cover; the black grid from the disguise cover through the VFC
-   // outputs; the plain dark background again from the racks to the end.
-   const grid=Math.max(0,ramp(s,T.s2.enter)-ramp(s,T.racks.enter));
+   // background: plain dark site background on the cover and the disguise info; black grid on the disguise cover and the
+   // VFC outputs; plain dark again from the racks to the end.
+   const grid=Math.max(0,ramp(s,T.s2.enter)-ramp(s,T.s3.enter)+ramp(s,T.s4.enter)-ramp(s,T.racks.enter));
    els.current.spot?.style.setProperty("--grid",String(Math.min(1,grid)));
    // 2 · disguise cover: the GX3 appears first, then the words slide out from behind it, up and down
    const product=ramp(s,T.s2.product),words=ramp(s,T.s2.text);
@@ -248,8 +248,8 @@ export function RentalsStory(){
      <div ref={bind(els,"silhouette")} className={`${styles.abs} ${styles.silhouette}`} style={rig(633,133,653,857)}><Image src="/images/rentals/silhouette-orig.webp" alt="" width={653} height={857} unoptimized/></div>
      <div ref={bind(els,"cam")} className={`${styles.abs} ${styles.camera}`} style={rig(633,133,653,857)}><Image src="/images/rentals/camera-fit.webp" alt="Cinema camera on a support rig with monitor and accessories" width={653} height={857} unoptimized/></div>
     </div>
-    <h2 ref={bind(els,"cam-text")} className={`${styles.abs} ${styles.gearTitle}`} style={box(70,150,760,undefined,215)}>Support{" "}<br/>gear</h2>
-    <p ref={bind(els,"cam-body")} className={`${styles.abs} ${styles.gearBody}`} style={box(243,672,405,undefined,40)}>Camera calibration kit,<br/>KVM, audio<br/>and networking</p>
+    <h2 ref={bind(els,"cam-text")} className={`${styles.abs} ${styles.gearTitle}`} style={box(70,250,760,undefined,200)}>Support{" "}<br/>gear</h2>
+    <p ref={bind(els,"cam-body")} className={`${styles.abs} ${styles.gearBody}`} style={box(70,760,310,undefined,28)}>Camera calibration kit,<br/>KVM, audio<br/>and networking</p>
     <p ref={bind(els,"cam-hint")} className={`${styles.abs} ${styles.scrollHint}`} style={box(1440,517,406,undefined,35.9)} aria-hidden="true">[ Scroll to view ]</p>
    </div>
 

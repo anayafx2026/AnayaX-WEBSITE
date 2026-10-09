@@ -5,10 +5,6 @@ export const siteContent = {
   "description": "Visual systems and immersive experiences for live entertainment, virtual production and landmark spaces.",
   "navigation": [
     {
-      "href": "/",
-      "label": "Home"
-    },
-    {
       "href": "/work",
       "label": "Work"
     },
@@ -17,12 +13,12 @@ export const siteContent = {
       "label": "Services"
     },
     {
-      "href": "/rentals",
-      "label": "Rentals"
-    },
-    {
       "href": "/studio",
       "label": "Studio"
+    },
+    {
+      "href": "/rentals",
+      "label": "Rentals"
     },
     {
       "href": "/about",
@@ -171,6 +167,15 @@ export const services = [
       }
     ]
   }
+] as const;
+// Menu labels approved in the October 8 references; existing detail URLs stay available.
+export const serviceMenu = [
+  {...services[5], title:"Show Programming & Operation", href:"/services/media-servers-and-massive-infrastructure", previewSlug:null},
+  {...services[0], title:"Content Design & Development", href:"/services/content-and-audio-production", previewSlug:services[0].slug},
+  {...services[3], title:"Virtual Production XR/AR", href:"/services/virtual-production-and-broadcast", previewSlug:services[3].slug},
+  {...services[1], title:"Projection Mapping", href:"/services/spatial-projection-and-special-fx", previewSlug:services[1].slug},
+  {...services[2], title:"Technical Consulting", href:"/contact", previewSlug:services[2].slug},
+  {...services[5], slug:"disguise-server-rentals", title:"Disguise Server Rentals", href:"/rentals", previewSlug:null, line:"disguise media servers and show-ready racks", capabilities:["disguise media servers","Show-ready racks"]},
 ] as const;
 export type Project = {slug:string;title:string;client:string;filter:string;category:string;description:string;media:"foto"|"video";services:string[];image?:string;imageAlt?:string;stat?:string;statLabel?:string};
 export const projects: Project[] = [
@@ -321,8 +326,8 @@ export const projects: Project[] = [
   },
   {
     "slug": "xr-stage-los-angeles",
-    "title": "XR Stage Los Angeles",
-    "client": "XR Stage",
+    "title": "The studio",
+    "client": "The studio",
     "filter": "Virtual Production & XR",
     "category": "Virtual Production · Unreal · Notch",
     "description": "Technical direction and screen programming for in-camera worlds created for artists and global brands.",
@@ -332,7 +337,7 @@ export const projects: Project[] = [
       "Media Servers & Infrastructure"
     ],
     "image": "/projects/xrstage_01.webp",
-    "imageAlt": "Virtual production setup at XR Stage Los Angeles"
+    "imageAlt": "Virtual production setup at The studio Los Angeles"
   }
 ];
 export const capabilities = [

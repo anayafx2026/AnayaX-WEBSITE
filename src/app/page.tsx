@@ -14,13 +14,15 @@ export default function HomePage(){return <main id="contenido" tabIndex={-1}>
     <p className="eyebrow">Creative vision. Technical precision.</p>
     <h2 id="intro-heading" className="intro-statement">Sculpting with light.<br/>{" "}Shadow.<br/>{" "}Motion.</h2>
     <p className="intro-description">ANAYAFX works at the intersection of creative direction, real-time media and complex video systems. From a single pixel to an arena-scale canvas, we connect creative intent with the systems that make it real.</p>
-  </div><a className="down-arrow" href="#selected-work" aria-label="Explore selected work">↓</a></section>
+  </div><a className="down-arrow" href="#home-services" aria-label="Explore services">↓</a></section>
+  <div id="home-services">
+    <ServiceLoop/>
+    <ServiceGallery/>
+  </div>
   <section id="selected-work" className="selected-work-editorial" aria-labelledby="selected-work-heading">
-    <div className="section-heading"><p className="eyebrow">Selected work</p><h2 id="selected-work-heading">Built to move the room.</h2></div>
+    <div className="section-heading"><p className="eyebrow">Selected work</p><h2 id="selected-work-heading">Services of place.</h2></div>
     <FeaturedProjects/>
   </section>
-  <ServiceLoop/>
-  <ServiceGallery/>
   <section className="practice-section"><div className="section-heading"><p className="eyebrow">Capabilities</p><h2>One team.<br/>Every surface.</h2><p>Creative direction, content and show systems, working together.</p></div>
     <div className="practice-grid">{capabilities.map(item=><article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
   </section>

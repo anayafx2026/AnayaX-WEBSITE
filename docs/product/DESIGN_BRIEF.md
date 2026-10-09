@@ -4,7 +4,7 @@
 
 La última instrucción prevalece sobre la interpretación inicial de la guía: mantener el orden, composición y animaciones existentes; cambiar la información y el logo. Los doce trabajos se incorporan en la galería inferior de Home y en Services.
 
-Home mantiene: intro/hero, manifiesto, tres filas destacadas (Coachella, Sphere, XR Stage), carrusel 3D en escritorio y tarjetas superpuestas en móvil, capacidades, galería elástica inferior, clientes y resumen del estudio. No se añade una sección nueva de Sphere ni una sección de accesos que cambie este orden. Rentals y Studio se enlazan desde el resumen existente.
+La referencia del 8 de octubre actualiza Home: logo más grande, botón de menú de dos líneas arriba a la derecha, menos espacio en el manifiesto y destacados en orden Sphere, Coachella, The studio. Servicios se intercambia con los trabajos destacados: el carrusel y su índice aparecen después del manifiesto, antes de las tres filas de proyectos. Se mueven los bloques completos y se conservan sus títulos y animaciones. Las demás secciones conservan su orden: capacidades, galería elástica inferior, clientes y resumen del estudio.
 
 La intro recupera su coreografía y duración anteriores: entrada desde abajo, letras laterales, FX, recogida y desplazamiento hacia la cabecera; las máscaras se adaptan al logo original sin deformarlo. El video recupera escala y desenfoque con scroll. Se conservan video MP4/WebM, almacenamiento de sesión tolerante a fallos y movimiento reducido. La duración anterior sustituye el ajuste de 2.5 segundos del primer intento.
 
