@@ -16,7 +16,7 @@ El menú principal se abre desde un botón fijo de dos líneas en la esquina sup
 
 Todas las páginas tienen un botón de flecha hacia arriba en la esquina inferior izquierda para regresar a la primera secuencia de la página actual. Aparece después de una pantalla de scroll, o de dos pantallas en Rentals cinematográfico, cuando termina su apertura. En páginas más cortas aparece al alcanzar el final del scroll disponible. Al pulsarlo, el scroll vuelve al inicio y el foco regresa al contenido principal. Usa desplazamiento suave salvo con movimiento reducido; al llegar al inicio se oculta. No cambia la ruta ni repite la intro de carga de Home.
 
-WorkMosaic conserva el mosaico, extendido a doce proyectos, y sus filtros. Las imágenes faltantes permanecen pendientes; no se inventan ni se atribuyen a otro evento.
+WorkMosaic conserva el mosaico, extendido a doce proyectos, sin controles de filtros. Las once colecciones entregadas usan una imagen propia como portada del mosaico; The studio conserva su imagen existente porque no recibió media nueva.
 
 Contacto mantiene las tres opciones de consulta y genera borrador de correo. No envía automáticamente. Pendientes y validación: docs/product/GUIDE_IMPLEMENTATION.md.
 

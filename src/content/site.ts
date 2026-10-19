@@ -191,6 +191,21 @@ export const mediaCollections = {
   "windows-11-launch":"windows-11-launch",
   "jimmy-kimmel":"jimmy-kimmel"
 } as const;
+// Editorial previews for Work. They only surface the supplied archive in the Work mosaic;
+// existing Home and Services media remain unchanged.
+export const workMediaPreviews = {
+  "eagles-sphere":"/media/projects/eagles-sphere/asset-001.jpg",
+  "kenny-chesney-sphere":"/media/projects/kenny-chesney-sphere/asset-001.jpg",
+  "lenovo-ces":"/media/projects/lenovo-ces/asset-001.jpg",
+  "lenny-kravitz-sphere":"/media/projects/lenny-kravitz-sphere/asset-001.jpg",
+  "chick-fil-a":"/media/projects/chick-fil-a/asset-001.png",
+  "ford-f150-lightning":"/media/projects/ford-f150-lightning/asset-001.jpg",
+  "coachella":"/media/projects/coachella/asset-001.jpg",
+  "eagles-tour":"/media/projects/eagles-tour/asset-001.jpg",
+  "andrea-bocelli":"/media/projects/andrea-bocelli/asset-001.jpg",
+  "windows-11-launch":"/media/projects/windows-11-launch/asset-001.png",
+  "jimmy-kimmel":"/media/projects/jimmy-kimmel/asset-001.jpg"
+} as const;
 export type Project = {slug:string;title:string;client:string;filter:string;category:string;description:string;media:"foto"|"video";services:string[];image?:string;imageAlt?:string;stat?:string;statLabel?:string;mediaCollection?:keyof typeof mediaCollections};
 export const projects: Project[] = [
   {

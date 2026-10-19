@@ -4,7 +4,7 @@ Fuente: ANAYAFX-Guia-Sitio-Web-Tono.pdf, 29 de septiembre de 2026.
 | Ruta | Contenido | Acción |
 | --- | --- | --- |
 | / | Intro, manifiesto, servicios, tres destacados, capacidades, galería inferior de doce trabajos, clientes, estudio | Explorar y contactar |
-| /work | Doce proyectos, cuatro filtros y Notable credits | Abrir ficha |
+| /work | Doce proyectos con media entregada y Notable credits | Abrir ficha |
 | /work/[slug] | Texto literal, media identificada y servicios relacionados | Siguiente proyecto |
 | /services | Menú de seis servicios en el orden de las referencias del 8 de octubre | Abrir servicio, Contact o Rentals |
 | /services/[slug] | Descripción, especialidades y proyectos relacionados | Contactar |

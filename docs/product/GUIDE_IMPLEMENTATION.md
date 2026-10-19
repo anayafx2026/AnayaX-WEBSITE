@@ -7,7 +7,7 @@ Fuente editorial: `C:/Users/anton/Downloads/ANAYAFX-Guia-Sitio-Web-Tono.pdf`, fe
 - Logo original de OLD landing en cabecera, intro y footer; favicon e imagen social del sitio antiguo.
 - ANAYAFX en texto y metadatos, Anaya Visual, Inc. solo en copyright; sin rayas largas.
 - Home, Work, Services, Rentals, Studio, About y Contact en ese orden; FAQs en footer. El PDF dice seis áreas pero enumera siete enlaces contando Home: se conserva su lista completa.
-- Doce proyectos en el orden solicitado y cuatro filtros; Notable credits sin Metallica. Sin Private Commission.
+- Doce proyectos en el orden solicitado, sin barra de filtros; Notable credits sin Metallica. Sin Private Commission.
 - Rentals sin tarifas; Studio dentro de The Core; About y diez FAQs con el texto de la guía.
 - Seis servicios con nombres y URLs corregidos, enlaces a proyectos relacionados según los roles descritos. No se atribuye un servicio a Kenny Chesney hasta confirmar el rol.
 - Redirecciones de Coachella, Sphere, spacial y /faq.
@@ -35,7 +35,7 @@ Fuente editorial: `C:/Users/anton/Downloads/ANAYAFX-Guia-Sitio-Web-Tono.pdf`, fe
 - La ruta de disponibilidad se corrigió de estática a dinámica: ahora responde 503 si el backend es obligatorio y no está configurado, en lugar de reutilizar un 200 calculado en build.
 - Chromium: escritorio a 1440 px y móvil a 390 px. Sin desbordamiento horizontal en Home, Work, Services, Rentals, Studio, About, Contact, FAQs y una ficha con foto.
 - Intro automática y omisión por clic, rueda y Escape; no se repite en la sesión. Movimiento reducido omite intro y deja el video detenido. Reproducción real del showreel comprobada.
-- Los filtros muestran 4, 2, 3 y 3 proyectos; All muestra 12. Contacto valida campos requeridos, conserva el brief al retroceder y prepara destinatario, asunto y cuerpo para Project, Rental y Studio. No se envió correo.
+- El mosaico muestra los doce proyectos sin filtrar. Contacto valida campos requeridos, conserva el brief al retroceder y prepara destinatario, asunto y cuerpo para Project, Rental y Studio. No se envió correo.
 - Menú móvil con todos los enlaces y devolución de foco tras Escape. Imágenes renderizadas con atributo alt. Capturas y reporte de navegador en `tmp/`, excluido de Git.
 - Instalación de dependencias sin modificar el lockfile; Node 22 y FFmpeg usados desde `tmp/`. La exportación compilada antigua `ftp_new anayafx/` se excluyó del lint, igual que los temporales.
 - No se ha validado recepción de correo, tarjetas en aplicaciones externas, rendimiento con media definitiva ni lanzamiento.
@@ -48,13 +48,13 @@ Home mantiene: intro/hero, manifiesto, tres filas destacadas (Coachella, Sphere,
 
 La intro recupera su coreografía y duración anteriores: entrada desde abajo, letras laterales, FX, recogida y desplazamiento hacia la cabecera; las máscaras se adaptan al logo original sin deformarlo. El video recupera escala y desenfoque con scroll. Se conservan video MP4/WebM, almacenamiento de sesión tolerante a fallos y movimiento reducido. La duración anterior sustituye el ajuste de 2.5 segundos del primer intento.
 
-Services conserva su lista tipográfica y efectos, con la galería de doce proyectos debajo. Home conserva el comportamiento elástico/hover y acordeón móvil con los doce trabajos. About recupera sus bloques y espacios multimedia, integrando la información nueva. Work recupera el mosaico y efectos anteriores, extendido a doce elementos con los filtros de la guía.
+Services conserva su lista tipográfica y efectos, con la galería de doce proyectos debajo. Home conserva el comportamiento elástico/hover y acordeón móvil con los doce trabajos. About recupera sus bloques y espacios multimedia, integrando la información nueva. Work recupera el mosaico y efectos anteriores, extendido a doce elementos sin filtros.
 
 Los espacios de media existentes se conservan mientras llega el material aprobado; los rótulos se traducen al inglés. Se retiró el rediseño de tarjetas numeradas y se conservan las animaciones originales.
 
 ## Revisión de la corrección, 2 de octubre de 2026
 
-Comprobado en Chromium: orden original de secciones y destacados, secuencia del logo antiguo, rotación del carrusel 3D con rueda, galería elástica de doce proyectos en Home y Services, acordeón móvil y filtros. Sin desbordamiento horizontal a 390 px en Home, Services, About y Work. Se recuperó el marcador multimedia original para los proyectos sin foto, evitando títulos duplicados en los paneles estrechos.
+Comprobado en Chromium: orden original de secciones y destacados, secuencia del logo antiguo, rotación del carrusel 3D con rueda, galería elástica de doce proyectos en Home y Services, acordeón móvil y mosaico completo de Work. Sin desbordamiento horizontal a 390 px en Home, Services, About y Work. Se recuperó el marcador multimedia original para los proyectos sin foto, evitando títulos duplicados en los paneles estrechos.
 
 Las 26 rutas, sus canonical, redirecciones, assets, noindex, 404 y disponibilidad del backend pasan el smoke. No se publicó el sitio; la vista previa se sirve en http://127.0.0.1:3100/.
 
@@ -66,3 +66,8 @@ Validación final: `pnpm check` completo correcto. Prueba táctil con viewport d
 - Las once fichas de trabajo con material entregado muestran ahora una galería adicional de archivo, con imágenes diferidas y videos bajo control manual. No se sustituyeron el video de apertura, sus derivados, la media de Services ni las imágenes previas.
 - The studio no recibe media nueva porque la colección no contiene una carpeta identificada para ese proyecto.
 - El cambio sigue siendo para revisión local: no se publicó, no se cambió DNS y no se eliminó ningún archivo o bloque existente.
+
+## Work: portadas de la colección, 18 de octubre de 2026
+
+- Work muestra las once colecciones nuevas directamente en las portadas de su mosaico y conserva la imagen existente de The studio.
+- Se eliminó la barra de filtros All, Sphere, Corporate & Brand, Touring & Festivals y Virtual Production & XR, como se solicitó. El mosaico muestra los doce proyectos en su orden editorial.
