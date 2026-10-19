@@ -59,3 +59,10 @@ Comprobado en Chromium: orden original de secciones y destacados, secuencia del 
 Las 26 rutas, sus canonical, redirecciones, assets, noindex, 404 y disponibilidad del backend pasan el smoke. No se publicó el sitio; la vista previa se sirve en http://127.0.0.1:3100/.
 
 Validación final: `pnpm check` completo correcto. Prueba táctil con viewport de 390 px: el primer toque expande el panel y el segundo abre la ficha. El foco de un toque ya no activa anticipadamente el panel; hover y foco visible de teclado conservan la expansión original. Revisión de capturas de intro, carrusel 3D y galerías en escritorio y móvil completada.
+
+## Incorporación de media, 18 de octubre de 2026
+
+- Se añadió de forma no destructiva la colección `AnayaWebsitePhotoCollections` a `public/media/collections/`. Conserva los 161 archivos entregados, agrupados por proyecto. Una copia apta para el repositorio, con rutas y nombres breves, se guarda en `public/media/projects/`; la galería usa esta copia para evitar el límite de longitud de rutas de Windows y Git.
+- Las once fichas de trabajo con material entregado muestran ahora una galería adicional de archivo, con imágenes diferidas y videos bajo control manual. No se sustituyeron el video de apertura, sus derivados, la media de Services ni las imágenes previas.
+- The studio no recibe media nueva porque la colección no contiene una carpeta identificada para ese proyecto.
+- El cambio sigue siendo para revisión local: no se publicó, no se cambió DNS y no se eliminó ningún archivo o bloque existente.

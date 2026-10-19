@@ -177,7 +177,21 @@ export const serviceMenu = [
   {...services[2], title:"Technical Consulting", href:"/contact", previewSlug:services[2].slug},
   {...services[5], slug:"disguise-server-rentals", title:"Disguise Server Rentals", href:"/rentals", previewSlug:null, line:"disguise media servers and show-ready racks", capabilities:["disguise media servers","Show-ready racks"]},
 ] as const;
-export type Project = {slug:string;title:string;client:string;filter:string;category:string;description:string;media:"foto"|"video";services:string[];image?:string;imageAlt?:string;stat?:string;statLabel?:string};
+// Media added October 2026. Original home video and service media remain unchanged.
+export const mediaCollections = {
+  "eagles-sphere":"eagles-sphere",
+  "kenny-chesney-sphere":"kenny-chesney-sphere",
+  "lenovo-ces":"lenovo-ces",
+  "lenny-kravitz-sphere":"lenny-kravitz-sphere",
+  "chick-fil-a":"chick-fil-a",
+  "ford-f150-lightning":"ford-f150-lightning",
+  "coachella":"coachella",
+  "eagles-tour":"eagles-tour",
+  "andrea-bocelli":"andrea-bocelli",
+  "windows-11-launch":"windows-11-launch",
+  "jimmy-kimmel":"jimmy-kimmel"
+} as const;
+export type Project = {slug:string;title:string;client:string;filter:string;category:string;description:string;media:"foto"|"video";services:string[];image?:string;imageAlt?:string;stat?:string;statLabel?:string;mediaCollection?:keyof typeof mediaCollections};
 export const projects: Project[] = [
   {
     "slug": "eagles-sphere",
@@ -190,7 +204,8 @@ export const projects: Project[] = [
     "services": [
       "Show Direction & Previz",
       "Media Servers & Infrastructure"
-    ]
+    ],
+    "mediaCollection":"eagles-sphere"
   },
   {
     "slug": "kenny-chesney-sphere",
@@ -200,7 +215,8 @@ export const projects: Project[] = [
     "category": "Sphere Residency · 2025 and 2026",
     "description": "ANAYAFX returned to Sphere for Kenny Chesney's summer residencies in 2025 and 2026.",
     "media": "foto",
-    "services": []
+    "services": [],
+    "mediaCollection":"kenny-chesney-sphere"
   },
   {
     "slug": "lenovo-ces",
@@ -213,7 +229,8 @@ export const projects: Project[] = [
     "services": [
       "Show Direction & Previz",
       "Media Servers & Infrastructure"
-    ]
+    ],
+    "mediaCollection":"lenovo-ces"
   },
   {
     "slug": "lenny-kravitz-sphere",
@@ -226,7 +243,8 @@ export const projects: Project[] = [
     "services": [
       "Show Direction & Previz",
       "Media Servers & Infrastructure"
-    ]
+    ],
+    "mediaCollection":"lenny-kravitz-sphere"
   },
   {
     "slug": "chick-fil-a",
@@ -238,7 +256,8 @@ export const projects: Project[] = [
     "media": "foto",
     "services": [
       "Content & Audio Production"
-    ]
+    ],
+    "mediaCollection":"chick-fil-a"
   },
   {
     "slug": "ford-f150-lightning",
@@ -251,7 +270,8 @@ export const projects: Project[] = [
     "services": [
       "Content & Audio Production",
       "Spatial Projection & Special FX"
-    ]
+    ],
+    "mediaCollection":"ford-f150-lightning"
   },
   {
     "slug": "coachella",
@@ -265,7 +285,8 @@ export const projects: Project[] = [
       "Spatial Projection & Special FX",
       "Show Direction & Previz",
       "Immersive & Interactive"
-    ]
+    ],
+    "mediaCollection":"coachella"
   },
   {
     "slug": "eagles-tour",
@@ -280,7 +301,8 @@ export const projects: Project[] = [
       "Media Servers & Infrastructure"
     ],
     "image": "/projects/EAGLES_01.webp",
-    "imageAlt": "The Eagles on tour with stage video screens"
+    "imageAlt": "The Eagles on tour with stage video screens",
+    "mediaCollection":"eagles-tour"
   },
   {
     "slug": "andrea-bocelli",
@@ -294,7 +316,8 @@ export const projects: Project[] = [
       "Spatial Projection & Special FX"
     ],
     "image": "/projects/andrea_bocelli_01.webp",
-    "imageAlt": "Projection design for Andrea Bocelli live on stage"
+    "imageAlt": "Projection design for Andrea Bocelli live on stage",
+    "mediaCollection":"andrea-bocelli"
   },
   {
     "slug": "windows-11-launch",
@@ -306,7 +329,8 @@ export const projects: Project[] = [
     "media": "foto",
     "services": [
       "Virtual Production & Broadcast"
-    ]
+    ],
+    "mediaCollection":"windows-11-launch"
   },
   {
     "slug": "jimmy-kimmel",
@@ -322,7 +346,8 @@ export const projects: Project[] = [
       "Media Servers & Infrastructure"
     ],
     "image": "/projects/jimmykimmellive_01.webp",
-    "imageAlt": "XR performance environment for Jimmy Kimmel Live"
+    "imageAlt": "XR performance environment for Jimmy Kimmel Live",
+    "mediaCollection":"jimmy-kimmel"
   },
   {
     "slug": "xr-stage-los-angeles",
